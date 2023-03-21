@@ -6,6 +6,13 @@ for (let i = 0; i < 16; i++) {
     for (let j = 0; j < 16; j++) {
         const pix = document.createElement('div');
         pix.setAttribute('style', "background-color: white; flex: 1 1 1px;");
+        pix.addEventListener(
+            "mouseover",
+            (event) => {
+                event.target.style.backgroundColor = "black";
+            },
+            false
+        );
 
         row.appendChild(pix);
     }
