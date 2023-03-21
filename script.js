@@ -17,15 +17,41 @@ function draw(size, maxSize) {
             row.setAttribute('style', "display: flex; flex: 1 1 1px; flex-direction: column;");
             for (let j = 0; j < size; j++) {
                 const pix = document.createElement('div');
-                pix.setAttribute('style', "background-color: white; flex: 1 1 1px;");
+                pix.setAttribute('style', `background-color: white; flex: 1 1 1px;`);
                 pix.addEventListener(
-                    "mouseover",
+                    "mouseenter",
                     (event) => {
-                        event.target.style.backgroundColor = "black";
+                        // console.log(event.target.style.backgroundColor);
+                        if (event.target.style.backgroundColor == 'white') {
+                            event.target.style.backgroundColor = `rgb(
+                                ${Math.floor(Math.random() * 256)},
+                                ${Math.floor(Math.random() * 256)},
+                                ${Math.floor(Math.random() * 256)}
+                            )`;
+                        }
+                        else {
+                            let color = event.target.style.backgroundColor;
+                            color = color.substring(4, color.length - 1).replace(/ /g, '').split(',');
+                            console.log(color);
+
+                            for (let k = 0; k < 3; k++) {
+                                if (color[k] < 26) {
+                                    color[k] = 0;
+                                }
+                                else {
+                                    color[k] = Math.floor(color[k] - 25.6);
+                                }
+                            }
+
+                            event.target.style.backgroundColor = `rgb(
+                                ${color[0]},
+                                ${color[1]},
+                                ${color[2]}
+                            )`;
+                        }
                     },
                     false
                 );
-    
                 row.appendChild(pix);
             }
             container.appendChild(row);
