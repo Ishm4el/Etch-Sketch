@@ -1,14 +1,33 @@
 const container = document.querySelector('#container');
 
 const maxSize = 100;
+const defaultSize = 16;
 let size = 16;
+
+let brushType = 0;
 
 const refactor = document.querySelector('#refactor');
 refactor.addEventListener('click', () => {
     size = prompt("Please enter a new size for the canvas: (max is 100!)");
+
+    if (size < 1 || size > 100 || isNaN(+size)) {
+        size = defaultSize;
+    }
+
     removeChildren(container);
+
     draw(size, maxSize);
 });
+
+const blackBrush = document.querySelector('#black');
+blackBrush.addEventListener('click', () => {
+    brushType = 0;
+})
+
+const rainbowBrush = document.querySelector('#rainbow');
+rainbowBrush.addEventListener('click', () => {
+    brushType = 1;
+})
 
 function draw(size, maxSize) {
     if (maxSize >= size) {
@@ -21,33 +40,38 @@ function draw(size, maxSize) {
                 pix.addEventListener(
                     "mouseenter",
                     (event) => {
-                        // console.log(event.target.style.backgroundColor);
-                        if (event.target.style.backgroundColor == 'white') {
-                            event.target.style.backgroundColor = `rgb(
-                                ${Math.floor(Math.random() * 256)},
-                                ${Math.floor(Math.random() * 256)},
-                                ${Math.floor(Math.random() * 256)}
-                            )`;
-                        }
-                        else {
-                            let color = event.target.style.backgroundColor;
-                            color = color.substring(4, color.length - 1).replace(/ /g, '').split(',');
-                            console.log(color);
-
-                            for (let k = 0; k < 3; k++) {
-                                if (color[k] < 26) {
-                                    color[k] = 0;
-                                }
-                                else {
-                                    color[k] = Math.floor(color[k] - 25.6);
-                                }
+                        if (brushType == 1) {
+                            // console.log(event.target.style.backgroundColor);
+                            if (event.target.style.backgroundColor == 'white') {
+                                event.target.style.backgroundColor = `rgb(
+                                    ${Math.floor(Math.random() * 256)},
+                                    ${Math.floor(Math.random() * 256)},
+                                    ${Math.floor(Math.random() * 256)}
+                                )`;
                             }
+                            else {
+                                let color = event.target.style.backgroundColor;
+                                color = color.substring(4, color.length - 1).replace(/ /g, '').split(',');
+                                console.log(color);
 
-                            event.target.style.backgroundColor = `rgb(
-                                ${color[0]},
-                                ${color[1]},
-                                ${color[2]}
-                            )`;
+                                for (let k = 0; k < 3; k++) {
+                                    if (color[k] < 26) {
+                                        color[k] = 0;
+                                    }
+                                    else {
+                                        color[k] = Math.floor(color[k] - 25.6);
+                                    }
+                                }
+
+                                event.target.style.backgroundColor = `rgb(
+                                    ${color[0]},
+                                    ${color[1]},
+                                    ${color[2]}
+                                )`;
+                            }
+                        }
+                        else if (brushType == 0) {
+                            event.target.style.backgroundColor = 'black';
                         }
                     },
                     false

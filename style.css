@@ -1,9 +1,54 @@
+body {
+    margin: 0;
+    padding: 0; 
+    background-color: steelblue; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border: 1px white solid;
+    border-radius: 5px;
+    
+    padding: 5px;
+}
+
+#workspace {
+    display: flex;
+    flex-direction: column;
+}
+
+#brushes {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px 0px;
+}
+
 #container {
     display: flex;
     width: 100px;
     height: 100px;
     background-color: white;
     border: 1px white solid;
+    border-radius: 1px;
 }
 
 #container div div {
@@ -11,6 +56,8 @@
     margin: 0;
     padding: 0;
 }
+
+
 
 /* .test {
     display: flex;
