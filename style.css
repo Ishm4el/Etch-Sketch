@@ -8,9 +8,9 @@ body {
     height: 100vh;
 }
 
-h3 {
+h1 {
     padding: 0;
-    margin: 0;
+    margin: 10px;
     color: white;
 }
 
@@ -27,8 +27,7 @@ button {
     background-color: black;
     border: 1px white solid;
     border-radius: 5px;
-    
-    padding: 5px;
+    padding: 20px 50px 50px;
 }
 
 #workspace {
@@ -38,17 +37,24 @@ button {
 
 #brushes {
     display: flex;
-    justify-content: space-evenly;
-    margin: 5px 0px;
+    justify-content: space-around;
+    margin: 20px 0px;
+    min-width: 5svw;
+}
+
+#black, #rainbow, #refactor {
+    width: 100px;
 }
 
 #container {
     display: flex;
-    width: 100px;
-    height: 100px;
     background-color: white;
     border: 1px white solid;
     border-radius: 1px;
+    width: 500px;
+    height: 500px;
+    min-width: 100px;
+    min-height: 100px;
 }
 
 #container div div {
@@ -56,22 +62,3 @@ button {
     margin: 0;
     padding: 0;
 }
-
-
-
-/* .test {
-    display: flex;
-    width: 500px;
-    height: 500px;
-}
-
-.out {
-    display: flex;
-    flex: auto;
-}
-
-.in {
-    display: flex;
-    flex: auto;
-    background-color: black;
-} */

@@ -33,10 +33,10 @@ function draw(size, maxSize) {
     if (maxSize >= size) {
         for (let i = 0; i < size; i++) {
             const row = document.createElement('div');
-            row.setAttribute('style', "display: flex; flex: 1 1 1px; flex-direction: column;");
+            row.setAttribute('style', "display: flex; flex: 1 1 25px; flex-direction: column;");
             for (let j = 0; j < size; j++) {
                 const pix = document.createElement('div');
-                pix.setAttribute('style', `background-color: white; flex: 1 1 1px;`);
+                pix.setAttribute('style', `background-color: white; flex: 1 1 25px;`);
                 pix.addEventListener(
                     "mouseenter",
                     (event) => {
